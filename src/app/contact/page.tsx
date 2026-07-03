@@ -5,11 +5,12 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { ContactMap } from "@/components/contact/ContactMap";
 import { companyContact } from "@/lib/data/company";
 import { formatTitle } from "@/lib/utils";
+import shah2 from "@/assets/shah-residence/shah-2.jpeg";
 
 export const metadata: Metadata = {
   title: formatTitle("Contact"),
   description:
-    "Contact Confidence Solution LTD. at 195 West Dhanmondi Modubazar, Dhaka. Call 01788889476 to discuss your next development.",
+    "Contact Confidence Solution LTD. Call 01788889476 or email info.confidencesolutionltd@gmail.com.",
 };
 
 export default function ContactPage() {
@@ -17,8 +18,8 @@ export default function ContactPage() {
     <>
       <PageHero
         title="Contact Confidence Solution LTD."
-        subtitle="Visit our Dhanmondi office or call us to discuss your development scope, investment goals, and delivery timeline."
-        image="https://images.unsplash.com/photo-1481026469463-66327c86e544?auto=format&fit=crop&w=1800&q=80"
+        subtitle="Visit our office or call us to discuss your development scope, investment goals, and delivery timeline."
+        image={shah2}
       />
       <section className="py-16">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">

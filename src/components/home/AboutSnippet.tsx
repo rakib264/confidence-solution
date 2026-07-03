@@ -3,6 +3,7 @@ import Link from "next/link";
 import { RevealTitle } from "@/components/ui/RevealTitle";
 import { MotionCounter } from "@/components/ui/MotionCounter";
 import { companyStats } from "@/lib/data/company";
+import manab4 from "@/assets/manab-noor/manab-4.jpeg";
 
 export function AboutSnippet() {
   return (
@@ -12,10 +13,10 @@ export function AboutSnippet() {
           <div className="relative">
             <div className="absolute -left-5 top-8 z-10 h-36 w-36 rounded-full border border-primary/30" />
             <div className="absolute -bottom-7 right-6 z-10 rounded-full border border-white/55 bg-black/45 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-white backdrop-blur">
-              West Dhanmondi
+              Residential
             </div>
             <Image
-              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1400&q=80"
+              src={manab4}
               alt="Premium high-rise living by Confidence Solution LTD."
               width={900}
               height={980}
@@ -27,17 +28,17 @@ export function AboutSnippet() {
           <div className="space-y-6">
             <p className="label-caps text-primary">About Confidence Solution LTD.</p>
             <RevealTitle
-              text="Building iconic addresses for Bangladesh's next generation"
+              text="Homes built with confidence."
               className="text-[clamp(2.2rem,5vw,4rem)] font-medium text-foreground"
             />
             <p className="text-base leading-8 text-muted-foreground">
-              Confidence Solution LTD. is a Dhanmondi-based real estate developer
-              focused on quality residential buildings in Dhaka.
+              Confidence Solution LTD. is a real estate developer focused on
+              quality residential buildings.
             </p>
             <p className="text-base leading-8 text-muted-foreground">
-              Our flagship project, Manab Noor at 195 West Dhanmondi Modubazar,
-              delivers 16 flats across 7 floors on a 6 katha plot — completed
-              in 2018.
+              Since 2018, we have been delivering residential projects with a
+              quality-first approach, trusted coordination, and dependable
+              handover for our clients.
             </p>
             <blockquote className="border-l-2 border-primary/70 pl-4 font-display text-2xl italic text-foreground/80">
               &quot;Every skyline deserves timeless design, uncompromising quality,

@@ -68,8 +68,8 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 border-b transition-all duration-300",
           scrolled
-            ? "border-neutral-900/10 bg-white/90 shadow-[0_14px_40px_rgba(0,0,0,0.08)] backdrop-blur-2xl"
-            : "border-white/15 bg-transparent",
+            ? "border-neutral-900/10 bg-white/92 shadow-[0_14px_40px_rgba(0,0,0,0.08)] backdrop-blur-2xl"
+            : "border-white/10 bg-[linear-gradient(180deg,rgba(6,10,17,0.64),rgba(6,10,17,0.08))]",
         )}
       >
         <nav
@@ -98,7 +98,7 @@ export function Navbar() {
             <div className="min-w-0">
               <p
                 className={cn(
-                  "truncate font-display text-[15px] font-semibold leading-tight sm:text-2xl sm:leading-none",
+                  "truncate font-display text-[15px] font-semibold leading-tight sm:text-[1.85rem] sm:leading-none",
                   scrolled ? "text-foreground" : "text-white",
                 )}
               >

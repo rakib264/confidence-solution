@@ -6,17 +6,15 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { projects } from "@/lib/data/projects";
 
-const slides = [
-  {
-    label: "RESIDENTIAL · DHANMONDI",
-    title: "Manab Noor",
-    body: "A 7-storey residential building with 16 flats on 6 katha at 195 West Dhanmondi Modubazar — completed in 2018.",
-    project: "Manab Noor",
-    image:
-      "https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=2200&q=80",
-  },
-];
+const slides = projects.map((project) => ({
+  label: `PROJECT ${project.number} · RESIDENTIAL`,
+  title: project.title,
+  body: project.summary,
+  project: project.title,
+  image: project.thumbnail,
+}));
 
 export function HeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -162,7 +160,7 @@ export function HeroSlider() {
               src={slide.image}
               alt={slide.title}
               fill
-              className="object-cover"
+              className="object-cover object-center brightness-[0.9] contrast-[1.05] saturate-[1.05]"
               priority={index === 0}
               sizes="100vw"
             />

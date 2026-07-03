@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ProjectDetailClient } from "@/components/projects/ProjectDetailClient";
 import { projects } from "@/lib/data/projects";
 import { formatTitle } from "@/lib/utils";
+import { projectImageSrc } from "@/lib/utils/project-image";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -24,7 +25,7 @@ export async function generateMetadata({
     title: formatTitle(project.title),
     description: project.summary,
     openGraph: {
-      images: [project.thumbnail],
+      images: [projectImageSrc(project.thumbnail)],
     },
   };
 }

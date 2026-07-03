@@ -19,12 +19,12 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-[var(--radius)] px-5 py-3 text-sm font-semibold transition-all duration-200 active:scale-95";
+    "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60 active:scale-[0.99]";
   const variants = {
     primary:
-      "bg-primary text-primary-foreground shadow-md hover:shadow-xl hover:scale-[1.01]",
+      "bg-primary text-primary-foreground shadow-[0_16px_36px_-18px_var(--primary)] hover:-translate-y-0.5 hover:shadow-[0_22px_40px_-18px_var(--primary)]",
     outline:
-      "border border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground",
+      "border border-primary/60 bg-transparent text-primary hover:border-primary hover:bg-primary hover:text-primary-foreground",
   };
 
   return (

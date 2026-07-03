@@ -9,8 +9,8 @@ export const companyContact = {
 } as const;
 
 export const companyStats = [
-  { value: 8, suffix: "+", label: "Years Experience" },
-  { value: 1, suffix: "", label: "Project Delivered" },
-  { value: 16, suffix: "", label: "Flats Delivered" },
-  { value: 1, suffix: "", label: "Location" },
+  { value: 8, suffix: "", label: "Years Experience" },
+  { value: 2, suffix: "", label: "Projects Delivered" },
+  { value: 28, suffix: "", label: "Flats Delivered" },
+  { value: 2, suffix: "", label: "Buildings" },
 ] as const;

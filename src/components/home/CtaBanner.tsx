@@ -9,8 +9,8 @@ export function CtaBanner() {
           Interested in our residential developments?
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-sm text-neutral-100 md:text-base">
-          Contact Confidence Solution LTD. to learn more about Manab Noor or
-          discuss your next residential project in Dhaka.
+          Contact Confidence Solution LTD. to learn more about our projects or
+          discuss your next residential development.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link

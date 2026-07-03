@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { formatTitle } from "@/lib/utils";
+import shah3 from "@/assets/shah-residence/shah-3.jpeg";
 
 export const metadata: Metadata = {
   title: formatTitle("Clients"),
@@ -18,7 +19,7 @@ export default function ClientsPage() {
       <PageHero
         title="Clients & Partners"
         subtitle="Our trusted relationships are built on delivery discipline, premium quality, and repeatable outcomes."
-        image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80"
+        image={shah3}
       />
       <section className="py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

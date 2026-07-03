@@ -1,136 +1,117 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
+import { MapPin } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
+import { ProjectImageCarousel } from "@/components/ui/ProjectImageCarousel";
+import { LeafletMap } from "@/components/ui/LeafletMap";
 import { Project } from "@/lib/types";
+import { projects } from "@/lib/data/projects";
+import {
+  allProjectImages,
+  projectImageSrc,
+} from "@/lib/utils/project-image";
 
-const projectSpecs = (project: Project) => [
-  { label: "Land Area", value: project.landArea },
-  { label: "Total Floors", value: `${project.totalFloors} Stories` },
-  { label: "Apartments", value: `${project.numberOfApartments} Flats` },
-  { label: "Completion Year", value: String(project.completionYear) },
-];
+const projectSpecs = (project: Project) =>
+  [
+    project.landArea ? { label: "Land Area", value: project.landArea } : null,
+    { label: "Total Floors", value: `${project.totalFloors} Stories` },
+    { label: "Apartments", value: `${project.numberOfApartments} Flats` },
+    { label: "Completion Year", value: String(project.completionYear) },
+  ].filter((item): item is { label: string; value: string } => item !== null);
 
 export function ProjectDetailClient({ project }: { project: Project }) {
   const [index, setIndex] = useState(-1);
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY || "",
-  });
+  const relatedProjects = useMemo(
+    () => projects.filter((item) => item.slug !== project.slug),
+    [project.slug],
+  );
+  const allImages = useMemo(() => allProjectImages(project), [project]);
+  const lightboxSlides = useMemo(
+    () => allImages.map((src) => ({ src: projectImageSrc(src) })),
+    [allImages],
+  );
 
   return (
     <>
-      <section className="relative h-[60vh] min-h-[420px] overflow-hidden">
-        <Image
-          src={project.thumbnail}
-          alt={project.title}
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent" />
-        <div className="relative mx-auto flex h-full max-w-7xl items-end px-4 pb-12 sm:px-6 lg:px-8">
-          <div>
-            <p className="inline-flex rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary-foreground">
-              Project {project.number}
-            </p>
-            <h1 className="mt-3 text-4xl font-black text-background md:text-5xl">
-              {project.title}
-            </h1>
-            <p className="mt-2 text-background/80">{project.location}</p>
-          </div>
+      <section className="bg-[#0f1115] pt-24 sm:pt-28 lg:pt-32">
+        <div className="lg:mx-auto lg:max-w-7xl lg:px-8">
+          <ProjectImageCarousel
+            images={allImages}
+            title={project.title}
+            variant="hero"
+            onExpand={(slideIndex) => setIndex(slideIndex)}
+            overlay={
+              <div className="flex h-full items-end px-4 pb-20 sm:px-8 sm:pb-24 lg:px-10 lg:pb-28">
+                <div className="max-w-3xl">
+                  <p className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white/90 backdrop-blur-md">
+                    Project {project.number} · Residential
+                  </p>
+                  <h1 className="mt-4 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-medium leading-[1.02] text-white">
+                    {project.title}
+                  </h1>
+                  <p className="mt-3 flex items-start gap-2 text-sm text-white/75 sm:text-base">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                    {project.location}
+                  </p>
+                </div>
+              </div>
+            }
+          />
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_320px] lg:px-8">
-          <article className="space-y-8">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              {project.summary}
-            </p>
+      <section className="py-16 md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-12 lg:px-8">
+          <article className="space-y-10">
+            <div className="space-y-4">
+              <p className="label-caps text-primary">Overview</p>
+              <p className="text-lg leading-8 text-muted-foreground">
+                {project.summary}
+              </p>
+            </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
               {projectSpecs(project).map((spec) => (
                 <div
                   key={spec.label}
-                  className="rounded-xl border border-border bg-card p-5"
+                  className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm"
                 >
-                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">
                     {spec.label}
                   </p>
-                  <p className="mt-2 text-xl font-semibold">{spec.value}</p>
+                  <p className="mt-2 font-display text-2xl font-medium">
+                    {spec.value}
+                  </p>
                 </div>
               ))}
             </div>
 
-            <div>
-              <h2 className="text-2xl font-black">Project Gallery</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Professional views of the development, interiors, and surrounding
-                environment.
-              </p>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {project.gallery.map((img, imgIndex) => (
-                  <button
-                    key={img}
-                    className="relative h-44 overflow-hidden rounded-lg"
-                    onClick={() => setIndex(imgIndex)}
-                  >
-                    <Image
-                      src={img}
-                      alt={`${project.title} photo ${imgIndex + 1}`}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 30vw, 50vw"
-                    />
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-xl border border-border">
-              {isLoaded ? (
-                <GoogleMap
-                  center={project.coordinates}
-                  zoom={13}
-                  mapContainerStyle={{ width: "100%", height: "320px" }}
-                  options={{ disableDefaultUI: true, zoomControl: true }}
-                >
-                  <MarkerF
-                    position={project.coordinates}
-                    title={project.title}
-                  />
-                </GoogleMap>
-              ) : (
-                <div className="grid h-80 place-items-center bg-muted text-sm text-muted-foreground">
-                  Map loading...
-                </div>
-              )}
-            </div>
+            <LeafletMap
+              center={project.coordinates}
+              zoom={15}
+              markerLabel={project.title}
+            />
           </article>
 
-          <aside className="space-y-4">
-            <div className="rounded-xl border border-border bg-card p-5">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+          <aside className="lg:sticky lg:top-24 lg:self-start">
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <h3 className="text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">
                 Project Details
               </h3>
-              <div className="mt-3 space-y-3 text-sm">
-                <p>
-                  <strong>Project:</strong> Project {project.number}
-                </p>
+              <div className="mt-4 space-y-3 text-sm">
                 <p>
                   <strong>Name:</strong> {project.title}
                 </p>
                 <p>
                   <strong>Location:</strong> {project.location}
                 </p>
-                <p>
-                  <strong>Land Area:</strong> {project.landArea}
-                </p>
+                {project.landArea ? (
+                  <p>
+                    <strong>Land Area:</strong> {project.landArea}
+                  </p>
+                ) : null}
                 <p>
                   <strong>Total Floors:</strong> {project.totalFloors}
                 </p>
@@ -143,7 +124,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
               </div>
               <Link
                 href="/contact"
-                className="mt-4 inline-flex w-full items-center justify-center rounded-[var(--radius)] bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
+                className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground"
               >
                 Contact Us
               </Link>
@@ -152,11 +133,48 @@ export function ProjectDetailClient({ project }: { project: Project }) {
         </div>
       </section>
 
+      {relatedProjects.length > 0 ? (
+        <section className="bg-muted py-16 md:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="font-display text-3xl font-medium">Our Other Project</h2>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              {relatedProjects.map((item) => (
+                <article
+                  key={item.slug}
+                  className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
+                >
+                  <ProjectImageCarousel
+                    images={allProjectImages(item)}
+                    title={item.title}
+                    variant="card"
+                  />
+                  <div className="space-y-2 p-5">
+                    <p className="text-xs uppercase tracking-[0.2em] text-primary">
+                      Project {item.number}
+                    </p>
+                    <h3 className="text-xl font-semibold">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {item.location}
+                    </p>
+                    <Link
+                      href={`/projects/${item.slug}`}
+                      className="inline-flex text-sm font-semibold text-primary"
+                    >
+                      View Details →
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <Lightbox
         open={index >= 0}
         close={() => setIndex(-1)}
         index={index}
-        slides={project.gallery.map((src) => ({ src }))}
+        slides={lightboxSlides}
       />
     </>
   );

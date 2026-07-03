@@ -15,6 +15,8 @@ import { ServicesGrid } from "@/components/home/ServicesGrid";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { formatTitle } from "@/lib/utils";
+import manab3 from "@/assets/manab-noor/manab-3.jpeg";
+import shah4 from "@/assets/shah-residence/shah-4.jpeg";
 
 export const metadata: Metadata = {
   title: formatTitle("Services"),
@@ -63,7 +65,7 @@ export default function ServicesPage() {
       <PageHero
         title="Services"
         subtitle="Comprehensive development and construction services engineered for quality, certainty, and long-term value."
-        image="https://images.unsplash.com/photo-1513828742140-ccaa28f3edae?auto=format&fit=crop&w=1800&q=80"
+        image={manab3}
       />
 
       <section className="py-20">
@@ -88,7 +90,7 @@ export default function ServicesPage() {
             </Link>
           </div>
           <Image
-            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80"
+            src={shah4}
             alt="High-rise construction by Confidence Solution LTD."
             width={720}
             height={500}

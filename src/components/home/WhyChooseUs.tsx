@@ -6,13 +6,15 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import Image from "next/image";
 import { RevealTitle } from "@/components/ui/RevealTitle";
+import shah5 from "@/assets/shah-residence/shah-5.jpeg";
 
 const features = [
   {
     title: "Prime Urban Landbank",
     description:
-      "Prime residential locations in West Dhanmondi and surrounding Dhaka neighborhoods.",
+      "Prime residential locations across Dhaka and surrounding neighborhoods.",
     icon: ShieldCheck,
   },
   {
@@ -51,7 +53,13 @@ export function WhyChooseUs() {
   return (
     <section className="relative overflow-hidden bg-[#0f141d] py-20 text-white md:py-24">
       <div className="pointer-events-none absolute inset-0 opacity-10">
-        <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center" />
+        <Image
+          src={shah5}
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

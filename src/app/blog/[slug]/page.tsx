@@ -6,6 +6,7 @@ import { blogPosts } from "@/lib/data/blog";
 import { PageHero } from "@/components/ui/PageHero";
 import { CommentForm } from "@/components/blog/CommentForm";
 import { formatTitle } from "@/lib/utils";
+import { projectImageSrc } from "@/lib/utils/project-image";
 import { FaFacebookF, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 type BlogPostProps = {
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
     title: formatTitle(post.title),
     description: post.excerpt,
     openGraph: {
-      images: [post.thumbnail],
+      images: [projectImageSrc(post.thumbnail)],
     },
   };
 }

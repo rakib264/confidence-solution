@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { formatTitle } from "@/lib/utils";
 import { ProjectsClient } from "@/components/projects/ProjectsClient";
+import shah1 from "@/assets/shah-residence/shah-1.jpeg";
 
 export const metadata: Metadata = {
   title: formatTitle("Projects"),
   description:
-    "Explore Manab Noor, Confidence Solution LTD.'s residential project at 195 West Dhanmondi Modubazar.",
+    "Explore Manab Noor and Shah Residence, Confidence Solution LTD.'s residential projects.",
 };
 
 export default function ProjectsPage() {
@@ -14,8 +15,8 @@ export default function ProjectsPage() {
     <>
       <PageHero
         title="Projects"
-        subtitle="Manab Noor — our residential development at 195 West Dhanmondi Modubazar."
-        image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=80"
+        subtitle="Manab Noor and Shah Residence — our residential developments."
+        image={shah1}
       />
       <ProjectsClient />
     </>

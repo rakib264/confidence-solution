@@ -1,4 +1,10 @@
 import { BlogPost } from "@/lib/types";
+import manab5 from "@/assets/manab-noor/manab-5.jpeg";
+import manab6 from "@/assets/manab-noor/manab-6.jpeg";
+import manab7 from "@/assets/manab-noor/manab-7.jpeg";
+import manab8 from "@/assets/manab-noor/manab-8.jpeg";
+import shah6 from "@/assets/shah-residence/shah-6.jpeg";
+import shah7 from "@/assets/shah-residence/shah-7.jpeg";
 
 const longForm = [
   "Bangladesh's premium real estate market now demands more than attractive facades. Investors and homeowners expect delivery certainty, transparent communication, and measurable quality from design stage to final handover.",
@@ -19,8 +25,7 @@ export const blogPosts: BlogPost[] = [
     author: "Nadia Rahman",
     excerpt:
       "A practical framework for managing schedule pressure while preserving quality, safety, and buyer confidence.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80",
+    thumbnail: manab5,
     content: longForm,
     tags: ["planning", "quality", "construction", "delivery"],
   },
@@ -32,8 +37,7 @@ export const blogPosts: BlogPost[] = [
     author: "Sabbir Alam",
     excerpt:
       "Strategies to phase modernization work while keeping tenants, teams, and operations safely active.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1400&q=80",
+    thumbnail: manab6,
     content: longForm,
     tags: ["retrofit", "phasing", "operations", "risk"],
   },
@@ -45,8 +49,7 @@ export const blogPosts: BlogPost[] = [
     author: "Reza Chowdhury",
     excerpt:
       "Early-stage coordination of MEP systems reduces clashes, rework, and hidden lifecycle costs.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1400&q=80",
+    thumbnail: manab7,
     content: longForm,
     tags: ["mep", "coordination", "engineering", "cost"],
   },
@@ -58,8 +61,7 @@ export const blogPosts: BlogPost[] = [
     author: "Imran Mahmud",
     excerpt:
       "How proactive safety governance protects people while improving delivery consistency.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1513828742140-ccaa28f3edae?auto=format&fit=crop&w=1400&q=80",
+    thumbnail: manab8,
     content: longForm,
     tags: ["safety", "hse", "leadership", "site"],
   },
@@ -71,8 +73,7 @@ export const blogPosts: BlogPost[] = [
     author: "Arif Hossain",
     excerpt:
       "Design and construction considerations for commercial buildings built to adapt over time.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80",
+    thumbnail: shah6,
     content: longForm,
     tags: ["workplace", "commercial", "design", "adaptability"],
   },
@@ -84,8 +85,7 @@ export const blogPosts: BlogPost[] = [
     author: "Farzana Alam",
     excerpt:
       "A framework to evaluate materials by durability, maintenance profile, and total value over time.",
-    thumbnail:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80",
+    thumbnail: shah7,
     content: longForm,
     tags: ["materials", "durability", "design", "performance"],
   },

@@ -5,7 +5,7 @@ export function Select({ className, children, ...props }: SelectHTMLAttributes<H
   return (
     <select
       className={cn(
-        "h-11 w-full rounded-[var(--radius)] border border-input bg-input/30 px-3 text-sm text-foreground",
+        "h-11 w-full rounded-xl border border-input bg-white/80 px-3.5 text-sm text-foreground shadow-[0_1px_0_rgba(255,255,255,0.7)_inset] transition-all focus:border-primary/60 focus:bg-white",
         className,
       )}
       {...props}

@@ -1,18 +1,20 @@
 import { LucideIcon } from "lucide-react";
 import type { StaticImageData } from "next/image";
 
+export type ProjectImage = string | StaticImageData;
+
 export type Project = {
   slug: string;
   number: number;
   title: string;
   location: string;
-  landArea: string;
+  landArea?: string;
   totalFloors: number;
   numberOfApartments: number;
   completionYear: number;
   summary: string;
-  thumbnail: string;
-  gallery: string[];
+  thumbnail: ProjectImage;
+  gallery: ProjectImage[];
   coordinates: { lat: number; lng: number };
 };
 
@@ -42,7 +44,7 @@ export type BlogPost = {
   date: string;
   author: string;
   excerpt: string;
-  thumbnail: string;
+  thumbnail: ProjectImage;
   content: string[];
   tags: string[];
 };
@@ -60,7 +62,7 @@ export type Testimonial = {
   role: string;
   company: string;
   rating: number;
-  avatar: string;
+  avatar: ProjectImage;
 };
 
 export type ThemeState = {

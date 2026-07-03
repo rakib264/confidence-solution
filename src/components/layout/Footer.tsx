@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { companyContact } from "@/lib/data/company";
-import { services } from "@/lib/data/services";
 import confidenceLogo from "@/assets/logo/confidence.jpeg";
 
 const quickLinks = [
@@ -15,8 +14,8 @@ const quickLinks = [
 export function Footer() {
   return (
     <footer className="mt-20 border-t border-primary/60 bg-[#0f1724] text-white/85">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
-        <div className="space-y-5">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.35fr_0.8fr_1fr] lg:gap-14 lg:px-8">
+        <div className="space-y-5 sm:pr-6">
           <div className="relative h-14 w-44 overflow-hidden rounded-md border border-white/20 bg-white/5">
             <Image
               src={confidenceLogo}
@@ -30,12 +29,12 @@ export function Footer() {
             Confidence Solution LTD.
           </p>
           <p className="max-w-xs text-sm leading-6 text-white/70">
-            Residential real estate developer in West Dhanmondi, Dhaka — home to
-            Manab Noor at 195 West Dhanmondi Modubazar.
+            A real estate developer focused on quality residential buildings —
+            home to Manab Noor and Shah Residence.
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 sm:justify-self-center">
           <h3 className="label-caps text-white">Quick Links</h3>
           <div className="space-y-2 text-sm text-white/75">
             {quickLinks.map((item) => (
@@ -50,30 +49,14 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="label-caps text-white">Services</h3>
-          <ul className="space-y-2 text-sm text-white/75">
-            {services.slice(0, 4).map((service) => (
-              <li key={service.slug}>
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="transition-colors hover:text-highlight"
-                >
-                  {service.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="space-y-4 text-sm text-white/75">
+        <div className="space-y-4 text-sm text-white/75 sm:justify-self-end sm:text-right">
           <h3 className="label-caps text-white">Contact</h3>
-          <p className="flex items-start gap-2">
-            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-highlight" />
+          <p className="flex items-start gap-2 sm:justify-end">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-highlight sm:order-2" />
             {companyContact.office}
           </p>
-          <p className="flex items-center gap-2">
-            <Phone className="h-4 w-4 shrink-0 text-highlight" />
+          <p className="flex items-center gap-2 sm:justify-end">
+            <Phone className="h-4 w-4 shrink-0 text-highlight sm:order-2" />
             <a
               href={`tel:${companyContact.phoneTel}`}
               className="transition-colors hover:text-white"
@@ -81,8 +64,8 @@ export function Footer() {
               {companyContact.phoneDisplay}
             </a>
           </p>
-          <p className="flex items-center gap-2">
-            <Mail className="h-4 w-4 shrink-0 text-highlight" />
+          <p className="flex items-center gap-2 sm:justify-end">
+            <Mail className="h-4 w-4 shrink-0 text-highlight sm:order-2" />
             <a
               href={`mailto:${companyContact.email}`}
               className="break-all transition-colors hover:text-white"

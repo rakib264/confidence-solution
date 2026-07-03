@@ -7,25 +7,26 @@ import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { formatTitle } from "@/lib/utils";
+import manab1 from "@/assets/manab-noor/manab-1.jpeg";
 
 export const metadata: Metadata = {
   title: formatTitle("About Us"),
   description:
-    "Learn about Confidence Solution LTD. and our residential project Manab Noor in West Dhanmondi, Dhaka.",
+    "Learn about Confidence Solution LTD. and our residential projects Manab Noor and Shah Residence.",
 };
 
 const timeline = [
   {
-    year: "2018",
-    text: "Completed Manab Noor — a 7-storey residential building with 16 flats on 6 katha at 195 West Dhanmondi Modubazar.",
+    year: "2022",
+    text: "Confidence Solution LTD. began operations as a residential real estate developer.",
   },
   {
     year: "2024",
-    text: "Confidence Solution LTD. strengthened operations from our Dhanmondi office to serve residents and future developments.",
+    text: "Expanded project delivery with a strong focus on quality and planned handovers.",
   },
   {
     year: "2026",
-    text: "Continuing to maintain Manab Noor and build on our experience in West Dhanmondi residential development.",
+    text: "Now serving residents with 8 years of continuous development experience since 2018.",
   },
 ];
 
@@ -35,7 +36,7 @@ export default function AboutPage() {
       <PageHero
         title="About Confidence Solution LTD."
         subtitle="Building Tomorrow's Skyline, Today through premium design, disciplined execution, and lasting trust."
-        image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=80"
+        image={manab1}
       />
 
       <section className="py-20">
@@ -43,17 +44,17 @@ export default function AboutPage() {
           <div className="space-y-4">
             <SectionHeading
               eyebrow="Company Story"
-              title="A Focused Developer Building Quality in Dhaka"
+              title="A Real Estate Developer Building Quality Homes"
               subtitle="Design excellence, engineering discipline, and dependable project governance."
             />
             <p className="leading-relaxed text-muted-foreground">
-              Confidence Solution LTD. is a Dhanmondi-based real estate developer
-              focused on thoughtfully planned residential buildings in Dhaka.
+              Confidence Solution LTD. is a real estate developer focused on
+              thoughtfully planned residential buildings.
             </p>
             <p className="leading-relaxed text-muted-foreground">
-              Our delivered project, Manab Noor, stands at 195 West Dhanmondi
-              Modubazar with 7 floors, 16 flats, and 6 katha of land — completed
-              in 2018.
+              Since 2018, we have been delivering residential projects with a
+              focus on construction quality, disciplined execution, and trusted
+              handover standards.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">

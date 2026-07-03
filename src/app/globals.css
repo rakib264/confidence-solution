@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "yet-another-react-lightbox/styles.css";
+@import "leaflet/dist/leaflet.css";
 
 :root {
   color-scheme: light;
@@ -84,6 +85,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+::selection {
+  background: color-mix(in oklch, var(--accent) 35%, white 65%);
+  color: var(--foreground);
+}
+
 .font-display {
   font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
   font-feature-settings: "liga" 1, "kern" 1;
@@ -144,4 +150,40 @@ select {
     linear-gradient(to right, color-mix(in oklch, var(--background), var(--foreground) 8%) 1px, transparent 1px),
     linear-gradient(to bottom, color-mix(in oklch, var(--background), var(--foreground) 8%) 1px, transparent 1px);
   background-size: 28px 28px;
+}
+
+.project-carousel--hero {
+  overflow: visible;
+}
+
+.project-carousel .swiper,
+.project-carousel .swiper-slide {
+  height: 100%;
+}
+
+.project-carousel--card .swiper {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.swiper-slide-active .carousel-kenburns {
+  animation: carouselKenBurns 7.5s ease-out forwards;
+  transform-origin: center center;
+}
+
+@keyframes carouselKenBurns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.project-carousel-thumbs-mobile {
+  padding-bottom: 0.15rem;
+}
+
+.project-carousel-thumbs-mobile .swiper-slide {
+  width: auto;
 }

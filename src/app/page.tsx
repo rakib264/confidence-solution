@@ -10,7 +10,7 @@ import { TestimonialsSlider } from "@/components/home/TestimonialsSlider";
 export const metadata: Metadata = {
   title: "Confidence Solution LTD. | Home",
   description:
-    "Confidence Solution LTD. — residential real estate developer in West Dhanmondi, Dhaka. Home to Manab Noor.",
+    "Confidence Solution LTD. — a real estate developer focused on quality residential buildings.",
 };
 
 export default function HomePage() {
