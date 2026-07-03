@@ -16,8 +16,6 @@ const links = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
-  { label: "Blog", href: "/blog" },
-  // { label: "Clients", href: "/clients" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -80,10 +78,10 @@ export function Navbar() {
             scrolled ? "h-[4.5rem]" : "h-24",
           )}
         >
-          <Link href="/" className="mr-8 flex items-center gap-3">
+          <Link href="/" className="flex min-w-0 flex-1 items-center gap-2.5 sm:mr-8 sm:flex-initial sm:gap-3">
             <div
               className={cn(
-                "relative h-11 w-11 overflow-hidden rounded-full border transition-colors",
+                "relative h-10 w-10 shrink-0 overflow-hidden rounded-full border transition-colors sm:h-11 sm:w-11",
                 scrolled
                   ? "border-neutral-900/15 bg-card"
                   : "border-white/40 bg-black/20",
@@ -97,10 +95,10 @@ export function Navbar() {
                 sizes="44px"
               />
             </div>
-            <div className="hidden sm:block">
+            <div className="min-w-0">
               <p
                 className={cn(
-                  "font-display text-2xl font-semibold leading-none",
+                  "truncate font-display text-[15px] font-semibold leading-tight sm:text-2xl sm:leading-none",
                   scrolled ? "text-foreground" : "text-white",
                 )}
               >
@@ -108,7 +106,7 @@ export function Navbar() {
               </p>
               <p
                 className={cn(
-                  "label-caps mt-1 text-[9px]",
+                  "label-caps mt-0.5 hidden text-[9px] sm:block sm:mt-1",
                   scrolled ? "text-muted-foreground" : "text-white/75",
                 )}
               >
@@ -149,7 +147,7 @@ export function Navbar() {
 
           <button
             className={cn(
-              "ml-auto grid h-10 w-10 place-items-center rounded-full border lg:hidden",
+              "ml-2 grid h-10 w-10 shrink-0 place-items-center rounded-full border sm:ml-auto lg:hidden",
               scrolled
                 ? "border-neutral-900/15 bg-white/70 text-foreground"
                 : "border-white/40 bg-black/20 text-white",

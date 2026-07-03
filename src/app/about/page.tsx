@@ -11,7 +11,7 @@ import { formatTitle } from "@/lib/utils";
 export const metadata: Metadata = {
   title: formatTitle("About Us"),
   description:
-    "Learn how Confidence Solution LTD. delivers premium high-rise residences, corporate towers, and mixed-use landmarks across Bangladesh.",
+    "Learn about Confidence Solution LTD. and our residential project Manab Noor in West Dhanmondi, Dhaka.",
 };
 
 const timeline = [

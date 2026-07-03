@@ -6,12 +6,11 @@ import { ProjectsShowcase } from "@/components/home/ProjectsShowcase";
 import { ServicesGrid } from "@/components/home/ServicesGrid";
 import { StatsBar } from "@/components/home/StatsBar";
 import { TestimonialsSlider } from "@/components/home/TestimonialsSlider";
-import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 
 export const metadata: Metadata = {
   title: "Confidence Solution LTD. | Home",
   description:
-    "Building Tomorrow's Skyline, Today - Confidence Solution LTD. develops premium high-rise residences, corporate towers, and mixed-use landmarks across Bangladesh.",
+    "Confidence Solution LTD. — residential real estate developer in West Dhanmondi, Dhaka. Home to Manab Noor.",
 };
 
 export default function HomePage() {
@@ -23,7 +22,6 @@ export default function HomePage() {
       <ProjectsShowcase />
       <StatsBar />
       <TestimonialsSlider />
-      <WhyChooseUs />
       <CtaBanner />
     </>
   );

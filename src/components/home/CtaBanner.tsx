@@ -6,11 +6,11 @@ export function CtaBanner() {
       <div className="pointer-events-none absolute inset-0 opacity-15 [background-image:radial-gradient(circle_at_30%_20%,white_1px,transparent_1px)] [background-size:20px_20px]" />
       <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-light text-neutral-50">
-          Let&apos;s shape Bangladesh&apos;s next skyline.
+          Interested in our residential developments?
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-sm text-neutral-100 md:text-base">
-          Schedule a consultation with Confidence Solution LTD. to discuss your
-          upcoming residential or corporate development.
+          Contact Confidence Solution LTD. to learn more about Manab Noor or
+          discuss your next residential project in Dhaka.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link

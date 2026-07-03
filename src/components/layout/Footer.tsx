@@ -1,26 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 import { companyContact } from "@/lib/data/company";
+import { services } from "@/lib/data/services";
 import confidenceLogo from "@/assets/logo/confidence.jpeg";
 
 const quickLinks = [
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Services", href: "/services" },
-  { label: "Blog", href: "/blog" },
-  // { label: "Clients", href: "/clients" },
   { label: "Contact", href: "/contact" },
-];
-
-const coreServices = [
-  "Real Estate Development",
-  "High-Rise Construction",
-  "Interior Fit-Out",
-  "Architecture & Design",
-  "Project Management",
-  "Land Acquisition & Advisory",
 ];
 
 export function Footer() {
@@ -41,21 +30,9 @@ export function Footer() {
             Confidence Solution LTD.
           </p>
           <p className="max-w-xs text-sm leading-6 text-white/70">
-            Building Tomorrow&apos;s Skyline, Today - premium high-rise living and
-            corporate developments across Bangladesh.
+            Residential real estate developer in West Dhanmondi, Dhaka — home to
+            Manab Noor at 195 West Dhanmondi Modubazar.
           </p>
-          <div className="flex gap-3">
-            {[FaLinkedinIn, FaFacebookF, FaInstagram].map((Icon, index) => (
-              <a
-                key={index}
-                href="#"
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/30 text-white/80 transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
-                aria-label="Social link"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
         </div>
 
         <div className="space-y-4">
@@ -76,8 +53,15 @@ export function Footer() {
         <div className="space-y-4">
           <h3 className="label-caps text-white">Services</h3>
           <ul className="space-y-2 text-sm text-white/75">
-            {coreServices.map((service) => (
-              <li key={service}>{service}</li>
+            {services.slice(0, 4).map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="transition-colors hover:text-highlight"
+                >
+                  {service.title}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -101,42 +85,21 @@ export function Footer() {
             <Mail className="h-4 w-4 shrink-0 text-highlight" />
             <a
               href={`mailto:${companyContact.email}`}
-              className="transition-colors hover:text-white"
+              className="break-all transition-colors hover:text-white"
             >
               {companyContact.email}
             </a>
           </p>
-          <div className="space-y-2 pt-2">
-            <p className="label-caps text-white">Newsletter</p>
-            <div className="group flex overflow-hidden rounded-full border border-white/25 bg-white/5 transition-colors focus-within:border-primary">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full bg-transparent px-4 py-2.5 text-sm text-white placeholder:text-white/45 focus:outline-none"
-              />
-              <button className="bg-primary px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground transition-transform group-hover:translate-x-0.5">
-                Join
-              </button>
-            </div>
-          </div>
+          <p className="text-white/60">{companyContact.hours}</p>
         </div>
       </div>
 
       <div className="border-t border-white/15">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-xs text-white/60 sm:flex-row sm:justify-between sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-5 text-center text-xs text-white/60 sm:px-6 lg:px-8">
           <p>
             © {new Date().getFullYear()} Confidence Solution LTD. All rights
             reserved.
           </p>
-          <div className="flex items-center gap-3">
-            <Link href="/contact" className="transition-colors hover:text-highlight">
-              Privacy Policy
-            </Link>
-            <span>·</span>
-            <Link href="/contact" className="transition-colors hover:text-highlight">
-              Terms
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

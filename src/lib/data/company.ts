@@ -3,7 +3,7 @@ export const companyContact = {
   phone: "01788889476",
   phoneDisplay: "01788-889476",
   phoneTel: "+8801788889476",
-  email: "hello@confidencesolutionltd.com",
+  email: "info.confidencesolutionltd@gmail.com",
   hours: "Sat - Thu, 9:00 AM - 7:00 PM",
   mapCenter: { lat: 23.7462, lng: 90.3754 },
 } as const;

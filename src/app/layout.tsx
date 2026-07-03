@@ -35,7 +35,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Confidence Solution LTD. | Building Tomorrow's Skyline, Today",
   description:
-    "Confidence Solution LTD. develops high-rise residences, corporate towers, and mixed-use landmarks across Dhaka, Chattogram, and major Bangladeshi cities.",
+    "Confidence Solution LTD. is a Dhanmondi-based residential real estate developer in Dhaka.",
 };
 
 const initThemeScript = `

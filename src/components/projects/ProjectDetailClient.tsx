@@ -1,15 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Link2 } from "lucide-react";
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import Lightbox from "yet-another-react-lightbox";
 import { Project } from "@/lib/types";
-import { projects } from "@/lib/data/projects";
-import { toast } from "sonner";
-import { FaFacebookF, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 const projectSpecs = (project: Project) => [
   { label: "Land Area", value: project.landArea },
@@ -24,10 +20,6 @@ export function ProjectDetailClient({ project }: { project: Project }) {
     id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY || "",
   });
-  const relatedProjects = useMemo(
-    () => projects.filter((item) => item.slug !== project.slug),
-    [project.slug],
-  );
 
   return (
     <>
@@ -149,77 +141,16 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                   <strong>Completion Year:</strong> {project.completionYear}
                 </p>
               </div>
-              <button className="mt-4 w-full rounded-[var(--radius)] bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
-                Download Brochure
-              </button>
-            </div>
-
-            <div className="rounded-xl border border-border bg-card p-5">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                Share
-              </h3>
-              <div className="mt-3 flex gap-2">
-                {[FaXTwitter, FaLinkedinIn, FaFacebookF].map((Icon, i) => (
-                  <button
-                    key={i}
-                    className="grid h-9 w-9 place-items-center rounded-md border border-border"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </button>
-                ))}
-                <button
-                  className="grid h-9 w-9 place-items-center rounded-md border border-border"
-                  onClick={() => {
-                    navigator.clipboard.writeText(window.location.href);
-                    toast.success("Project link copied.");
-                  }}
-                >
-                  <Link2 className="h-4 w-4" />
-                </button>
-              </div>
+              <Link
+                href="/contact"
+                className="mt-4 inline-flex w-full items-center justify-center rounded-[var(--radius)] bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
+              >
+                Contact Us
+              </Link>
             </div>
           </aside>
         </div>
       </section>
-
-      {relatedProjects.length > 0 ? (
-        <section className="bg-muted py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-black">Our Other Project</h2>
-            <div className="mt-6 grid gap-5 md:grid-cols-2">
-              {relatedProjects.map((item) => (
-                <article
-                  key={item.slug}
-                  className="overflow-hidden rounded-xl border border-border bg-card"
-                >
-                  <Image
-                    src={item.thumbnail}
-                    alt={item.title}
-                    width={600}
-                    height={360}
-                    className="h-44 w-full object-cover"
-                  />
-                  <div className="space-y-2 p-4">
-                    <p className="text-xs uppercase tracking-widest text-primary">
-                      Project {item.number}
-                    </p>
-                    <h3 className="font-bold">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {item.location}
-                    </p>
-                    <Link
-                      href={`/projects/${item.slug}`}
-                      className="text-sm font-semibold text-primary"
-                    >
-                      View Details
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       <Lightbox
         open={index >= 0}
