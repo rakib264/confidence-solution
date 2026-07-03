@@ -1,79 +1,80 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { projectCategories, projects } from "@/lib/data/projects";
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { RevealTitle } from "@/components/ui/RevealTitle";
+import { projects } from "@/lib/data/projects";
 
 export function ProjectsShowcase() {
-  const [activeCategory, setActiveCategory] = useState<(typeof projectCategories)[number]>("All");
-  const reducedMotion = useReducedMotion();
-  const filteredProjects = useMemo(
-    () =>
-      projects.filter((project) =>
-        activeCategory === "All" ? true : project.category === activeCategory,
-      ),
-    [activeCategory],
-  );
+  const featuredProject = projects[0];
+
+  if (!featuredProject) return null;
 
   return (
-    <section className="section-pattern bg-background py-20">
+    <section className="bg-[#0f1115] py-20 text-white md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Featured Projects"
-          title="Landmark Developments Built for the Region"
-          subtitle="Explore signature Confidence Solution LTD. projects delivered across Saudi Arabia and the GCC."
-        />
-        <div className="mt-8 flex flex-wrap gap-2">
-          {projectCategories.map((category) => (
-            <button
-              key={category}
-              className={cn(
-                "rounded-full border border-border px-4 py-2 text-sm font-medium",
-                activeCategory === category && "border-primary bg-primary text-primary-foreground",
-              )}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </button>
-          ))}
+        <div className="space-y-4">
+          <p className="label-caps-on-dark">Our Project</p>
+          <RevealTitle
+            text="Manab Noor — residential living in West Dhanmondi"
+            className="max-w-4xl text-[clamp(2.25rem,5.8vw,4.2rem)] font-medium text-white"
+          />
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {filteredProjects.slice(0, 6).map((project, index) => (
-            <motion.article
-              key={project.slug}
-              initial={reducedMotion ? undefined : { opacity: 0, y: 18 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: index * 0.05 }}
-              className="group relative overflow-hidden rounded-xl border border-border"
-            >
-              <Image
-                src={project.thumbnail}
-                alt={project.title}
-                width={600}
-                height={420}
-                className="h-72 w-full object-cover"
-                sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent opacity-85 transition-opacity group-hover:opacity-100" />
-              <div className="absolute inset-x-0 bottom-0 p-5 text-neutral-100">
-                <p className="text-xs uppercase tracking-widest text-accent">{project.location}</p>
-                <h3 className="mt-2 text-xl font-bold">{project.title}</h3>
-                <Link href={`/projects/${project.slug}`} className="mt-3 inline-flex rounded-[var(--radius)] bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground">
-                  View Landmark
+        <motion.article
+          key={featuredProject.slug}
+          layout
+          layoutId={`project-card-${featuredProject.slug}`}
+          className="group relative mt-8 overflow-hidden rounded-2xl border border-white/15"
+        >
+          <div className="relative aspect-[16/8] min-h-[320px]">
+            <Image
+              src={featuredProject.thumbnail}
+              alt={featuredProject.title}
+              fill
+              priority
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/82 via-black/50 to-transparent" />
+            <div className="absolute inset-y-0 left-0 flex w-full max-w-xl flex-col justify-center p-6 sm:p-10">
+              <p className="label-caps-on-dark text-[10px]">
+                Project {featuredProject.number} · Residential
+              </p>
+              <h3 className="font-display mt-3 text-[clamp(2rem,5vw,3.5rem)] font-medium leading-[1.02] text-white">
+                {featuredProject.title}
+              </h3>
+              <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/75 sm:text-base">
+                {featuredProject.summary}
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <span className="rounded-full border border-white/35 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/85">
+                  {featuredProject.totalFloors} Floors
+                </span>
+                <span className="rounded-full border border-white/35 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/85">
+                  {featuredProject.numberOfApartments} Flats
+                </span>
+                <span className="rounded-full border border-white/35 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/85">
+                  {featuredProject.landArea}
+                </span>
+                <Link
+                  href={`/projects/${featuredProject.slug}`}
+                  className="inline-flex rounded-full bg-white px-5 py-2 text-sm font-semibold text-foreground transition-transform hover:-translate-y-0.5"
+                >
+                  View Project →
                 </Link>
               </div>
-            </motion.article>
-          ))}
-        </div>
+            </div>
+          </div>
+        </motion.article>
+
         <div className="mt-10 text-center">
-          <Link href="/projects" className="rounded-[var(--radius)] border border-primary px-6 py-3 font-semibold text-primary">
-            View All Landmark Projects
+          <Link
+            href="/projects"
+            className="inline-flex rounded-full border border-white/35 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-[var(--highlight)] hover:text-[var(--highlight)]"
+          >
+            View Project Details
           </Link>
         </div>
       </div>

@@ -1,13 +1,13 @@
 "use client";
 
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
+import { companyContact } from "@/lib/data/company";
 
 export function ContactMap() {
   const { isLoaded } = useJsApiLoader({
-    id: "contact-map",
+    id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY || "",
   });
-  const center = { lat: 24.7136, lng: 46.6753 };
 
   if (!isLoaded) {
     return (
@@ -20,12 +20,15 @@ export function ContactMap() {
   return (
     <div className="overflow-hidden rounded-xl border border-border">
       <GoogleMap
-        center={center}
-        zoom={13}
+        center={companyContact.mapCenter}
+        zoom={15}
         mapContainerStyle={{ width: "100%", height: "290px" }}
         options={{ disableDefaultUI: true, zoomControl: true }}
       >
-        <MarkerF position={center} />
+        <MarkerF
+          position={companyContact.mapCenter}
+          title={companyContact.office}
+        />
       </GoogleMap>
     </div>
   );

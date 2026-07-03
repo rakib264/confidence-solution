@@ -1,15 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import {
   ArrowRight,
   Building2,
   ClipboardCheck,
   DraftingCompass,
-  Factory,
   Hammer,
+  MapPinned,
   Paintbrush,
 } from "lucide-react";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Card } from "@/components/ui/Card";
+import { motion } from "framer-motion";
+import { RevealTitle } from "@/components/ui/RevealTitle";
 import { services } from "@/lib/data/services";
 
 const icons = {
@@ -18,36 +20,65 @@ const icons = {
   DraftingCompass,
   ClipboardCheck,
   Paintbrush,
-  Factory,
+  MapPinned,
 };
 
 export function ServicesGrid() {
   return (
-    <section className="section-pattern bg-muted py-20">
+    <section className="bg-[#101010] py-20 text-white md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Our Services"
-          title="End-to-End Development and Construction Expertise"
-          subtitle="From feasibility and design to final commissioning, Confidence Solution LTD. provides complete delivery capability across GCC asset classes."
-          align="center"
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="text-center">
+          <p className="label-caps-on-dark">Our Services</p>
+          <RevealTitle
+            text="Integrated expertise for premium developments"
+            className="mx-auto mt-4 max-w-4xl text-[clamp(2.25rem,6vw,4rem)] font-medium text-white"
+          />
+          <div className="mx-auto mt-6 h-px w-32 bg-white/25" />
+        </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.12 } },
+          }}
+          className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
           {services.map((service) => {
             const Icon = icons[service.icon as keyof typeof icons];
             return (
-              <Card key={service.slug} className="group p-6">
-                <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3 text-primary">
-                  <Icon className="h-5 w-5" />
+              <motion.article
+                key={service.slug}
+                variants={{
+                  hidden: { opacity: 0, y: 24 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                whileHover={{ y: -6 }}
+                className="group relative overflow-hidden rounded-2xl border border-white/12 bg-[#1a1a1a] p-6 shadow-[0_24px_40px_rgba(0,0,0,0.25)]"
+              >
+                <span className="absolute left-0 top-0 h-full w-1 origin-bottom scale-y-0 bg-[var(--highlight)] transition-transform duration-300 group-hover:scale-y-100" />
+                <div className="icon-box-on-dark mb-5">
+                  <Icon className="h-5 w-5 stroke-[1.5]" />
                 </div>
-                <h3 className="text-lg font-bold">{service.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
-                <Link href={`/services/${service.slug}`} className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                  Explore Service <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <h3 className="text-xl font-semibold text-white">
+                  {service.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/70">
+                  {service.description}
+                </p>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="link-on-dark mt-5 inline-flex items-center gap-1 text-sm"
+                >
+                  Explore{" "}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
-              </Card>
+              </motion.article>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

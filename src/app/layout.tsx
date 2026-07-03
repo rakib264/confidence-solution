@@ -1,33 +1,41 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Merriweather, Montserrat, Ubuntu_Mono } from "next/font/google";
+import {
+  Montserrat,
+  Playfair_Display,
+  Plus_Jakarta_Sans,
+} from "next/font/google";
 import "./globals.css";
-import { AppProviders } from "@/components/providers/AppProviders";
+import {
+  AppProviders,
+  PageTransition,
+  SmoothScroll,
+} from "@/components/providers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["500", "600"],
 });
 
-const merriweather = Merriweather({
-  variable: "--font-merriweather",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const ubuntuMono = Ubuntu_Mono({
-  variable: "--font-ubuntu-mono",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["300", "400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Confidence Solution LTD. | Premium Real Estate & Construction",
+  title: "Confidence Solution LTD. | Building Tomorrow's Skyline, Today",
   description:
-    "Confidence Solution LTD. delivers premium real estate development and construction services across Saudi Arabia and the wider GCC.",
+    "Confidence Solution LTD. develops high-rise residences, corporate towers, and mixed-use landmarks across Dhaka, Chattogram, and major Bangladeshi cities.",
 };
 
 const initThemeScript = `
@@ -42,7 +50,12 @@ const initThemeScript = `
     if (theme.accent) root.style.setProperty("--accent", theme.accent);
     if (theme.radius) root.style.setProperty("--radius", theme.radius + "rem");
     if (theme.fontPreference) {
-      root.style.setProperty("--font-sans", theme.fontPreference === "sans" ? "var(--font-montserrat)" : "var(--font-merriweather)");
+      root.style.setProperty(
+        "--font-sans",
+        theme.fontPreference === "sans"
+          ? "var(--font-plus-jakarta)"
+          : "var(--font-playfair)",
+      );
     }
     if (theme.backgroundLightness) {
       root.style.setProperty("--background", "oklch(" + theme.backgroundLightness + " 0.005 240)");
@@ -50,7 +63,6 @@ const initThemeScript = `
   } catch {}
 })();
 `;
-
 
 export default function RootLayout({
   children,
@@ -60,14 +72,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${merriweather.variable} ${ubuntuMono.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${playfair.variable} ${plusJakarta.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <script dangerouslySetInnerHTML={{ __html: initThemeScript }} />
         <AppProviders>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <SmoothScroll>
+            <Navbar />
+            <PageTransition>
+              <main>{children}</main>
+            </PageTransition>
+            <Footer />
+          </SmoothScroll>
         </AppProviders>
       </body>
     </html>

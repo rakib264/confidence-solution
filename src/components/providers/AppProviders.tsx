@@ -34,7 +34,12 @@ function ThemeRuntime() {
     root.style.setProperty("--primary", theme.primary);
     root.style.setProperty("--accent", theme.accent);
     root.style.setProperty("--radius", `${theme.radius}rem`);
-    root.style.setProperty("--font-sans", theme.fontPreference === "sans" ? "var(--font-montserrat)" : "var(--font-merriweather)");
+    root.style.setProperty(
+      "--font-sans",
+      theme.fontPreference === "sans"
+        ? "var(--font-plus-jakarta)"
+        : "var(--font-playfair)",
+    );
     root.style.setProperty("--background", `oklch(${theme.backgroundLightness} 0.005 240)`);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(theme));
   }, [theme]);

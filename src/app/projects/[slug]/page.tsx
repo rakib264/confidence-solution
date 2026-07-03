@@ -22,7 +22,7 @@ export async function generateMetadata({
   }
   return {
     title: formatTitle(project.title),
-    description: project.description[0],
+    description: project.summary,
     openGraph: {
       images: [project.thumbnail],
     },

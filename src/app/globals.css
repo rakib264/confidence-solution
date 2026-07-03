@@ -28,9 +28,13 @@
   --chart-4: oklch(0.72 0.06 230);
   --chart-5: oklch(0.35 0.08 255);
   --radius: 0.625rem;
-  --font-sans: var(--font-montserrat);
-  --font-serif: var(--font-merriweather);
-  --font-mono: var(--font-ubuntu-mono);
+  --font-sans: var(--font-plus-jakarta);
+  --font-serif: var(--font-playfair);
+  --font-mono: var(--font-montserrat);
+  --font-label: var(--font-montserrat);
+  /* Readable accent tints on dark surfaces — does not change --primary */
+  --highlight: color-mix(in oklch, var(--accent) 50%, white 50%);
+  --highlight-soft: color-mix(in oklch, var(--accent) 25%, white 75%);
 }
 
 @theme inline {
@@ -74,6 +78,53 @@
 html,
 body {
   @apply bg-background text-foreground font-sans min-h-screen antialiased;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.font-label {
+  font-family: var(--font-montserrat), var(--font-sans), sans-serif;
+  letter-spacing: 0.12em;
+}
+
+.label-caps {
+  font-family: var(--font-montserrat), var(--font-sans), sans-serif;
+  @apply text-[11px] font-semibold uppercase tracking-[0.28em];
+}
+
+.text-highlight {
+  color: var(--highlight);
+}
+
+.text-highlight-soft {
+  color: var(--highlight-soft);
+}
+
+.label-caps-on-dark {
+  font-family: var(--font-montserrat), var(--font-sans), sans-serif;
+  @apply text-[11px] font-semibold uppercase tracking-[0.28em];
+  color: var(--highlight-soft);
+}
+
+.icon-box-on-dark {
+  @apply inline-flex rounded-xl border border-white/20 bg-white/10 p-3;
+  color: var(--highlight);
+}
+
+.link-on-dark {
+  color: var(--highlight);
+  @apply font-semibold transition-colors hover:text-white;
+}
+
+.section-soft {
+  background: color-mix(in oklch, var(--background), white 18%);
 }
 
 a,

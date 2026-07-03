@@ -1,11 +1,20 @@
 import { LucideIcon } from "lucide-react";
+import type { StaticImageData } from "next/image";
 
-export type ProjectCategory =
-  | "Residential"
-  | "Commercial"
-  | "Industrial"
-  | "Renovation"
-  | "Infrastructure";
+export type Project = {
+  slug: string;
+  number: number;
+  title: string;
+  location: string;
+  landArea: string;
+  totalFloors: number;
+  numberOfApartments: number;
+  completionYear: number;
+  summary: string;
+  thumbnail: string;
+  gallery: string[];
+  coordinates: { lat: number; lng: number };
+};
 
 export type Service = {
   slug: string;
@@ -15,28 +24,11 @@ export type Service = {
   deliverables: string[];
 };
 
-export type Project = {
-  slug: string;
-  title: string;
-  category: ProjectCategory;
-  location: string;
-  coordinates: { lat: number; lng: number };
-  description: string[];
-  challenges: string[];
-  solutions: string[];
-  thumbnail: string;
-  gallery: string[];
-  client: string;
-  areaSqFt: string;
-  duration: string;
-  completionDate: string;
-};
-
 export type TeamMember = {
   name: string;
   role: string;
   bio: string;
-  avatar: string;
+  avatar: string | StaticImageData;
   social: {
     linkedin: string;
     twitter: string;
@@ -84,6 +76,7 @@ export type SectionHeadingProps = {
   title: string;
   subtitle?: string;
   align?: "left" | "center";
+  variant?: "light" | "dark";
 };
 
 export type NavLink = {
