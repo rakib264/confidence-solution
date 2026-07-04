@@ -1,5 +1,5 @@
 import { TeamMember } from "@/lib/types";
-import nabilaAvatar from "@/assets/nabila.png";
+import womenPlaceholder from "@/assets/placeholders/woman-placeholder.svg";
 import mamunAvatar from "@/assets/mamun.jpeg";
 
 export const teamMembers: TeamMember[] = [
@@ -7,7 +7,7 @@ export const teamMembers: TeamMember[] = [
     name: "Marjia Khalid Sanjida Nabila",
     role: "Chairman",
     bio: "Provides strategic vision and governance leadership, guiding Confidence Solution LTD.'s long-term growth across Bangladesh's premium real estate landscape.",
-    avatar: nabilaAvatar,
+    avatar: womenPlaceholder,
     social: {
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
