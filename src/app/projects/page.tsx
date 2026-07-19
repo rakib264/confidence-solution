@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { formatTitle } from "@/lib/utils";
 import { ProjectsClient } from "@/components/projects/ProjectsClient";
-import shah1 from "@/assets/shah-residence/shah-1.jpeg";
+import shah1 from "@/assets/shah-residence/shah-2.jpeg";
 
 export const metadata: Metadata = {
   title: formatTitle("Projects"),

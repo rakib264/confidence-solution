@@ -1,9 +1,6 @@
 import type { StaticImageData } from "next/image";
 import { Project } from "@/lib/types";
 
-import manab1 from "@/assets/manab-noor/manab-1.jpeg";
-import manab2 from "@/assets/manab-noor/manab-2.jpeg";
-import manab3 from "@/assets/manab-noor/manab-3.jpeg";
 import manab4 from "@/assets/manab-noor/manab-4.jpeg";
 import manab5 from "@/assets/manab-noor/manab-5.jpeg";
 import manab6 from "@/assets/manab-noor/manab-6.jpeg";
@@ -13,7 +10,6 @@ import manab9 from "@/assets/manab-noor/manab-9.jpeg";
 import manab10 from "@/assets/manab-noor/manab-10.jpeg";
 import manab11 from "@/assets/manab-noor/manab-11.jpeg";
 
-import shah1 from "@/assets/shah-residence/shah-1.jpeg";
 import shah2 from "@/assets/shah-residence/shah-2.jpeg";
 import shah3 from "@/assets/shah-residence/shah-3.jpeg";
 import shah4 from "@/assets/shah-residence/shah-4.jpeg";
@@ -29,9 +25,6 @@ function splitImages(images: StaticImageData[]) {
 }
 
 const manabNoorImages = splitImages([
-  manab1,
-  manab2,
-  manab3,
   manab4,
   manab5,
   manab6,
@@ -43,7 +36,6 @@ const manabNoorImages = splitImages([
 ]);
 
 const shahResidenceImages = splitImages([
-  shah1,
   shah2,
   shah3,
   shah4,

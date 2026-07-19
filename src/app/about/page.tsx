@@ -7,7 +7,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { formatTitle } from "@/lib/utils";
-import manab1 from "@/assets/manab-noor/manab-1.jpeg";
+import manab1 from "@/assets/manab-noor/manab-4.jpeg";
 
 export const metadata: Metadata = {
   title: formatTitle("About Us"),

@@ -15,7 +15,7 @@ import { ServicesGrid } from "@/components/home/ServicesGrid";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { formatTitle } from "@/lib/utils";
-import manab3 from "@/assets/manab-noor/manab-3.jpeg";
+import manab3 from "@/assets/manab-noor/manab-6.jpeg";
 import shah4 from "@/assets/shah-residence/shah-4.jpeg";
 
 export const metadata: Metadata = {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { BlogClient } from "@/components/blog/BlogClient";
 import { PageHero } from "@/components/ui/PageHero";
 import { formatTitle } from "@/lib/utils";
-import manab2 from "@/assets/manab-noor/manab-2.jpeg";
+import manab2 from "@/assets/manab-noor/manab-5.jpeg";
 
 export const metadata: Metadata = {
   title: formatTitle("Blog"),
