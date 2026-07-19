@@ -2,6 +2,8 @@ import { TeamMember } from "@/lib/types";
 import womenPlaceholder from "@/assets/placeholders/woman-placeholder.svg";
 import mamunAvatar from "@/assets/mamun.jpeg";
 
+//test the deployment
+
 export const teamMembers: TeamMember[] = [
   {
     name: "Marjia Khalid Sanjida Nabila",
